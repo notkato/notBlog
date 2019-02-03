@@ -1,0 +1,17 @@
+
+<% if user_signed_in? && blog.id == current_user.id %>
+  <%end%>
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light">
+      </div>
+      <div class="card-content">
+        <%= simple_format(blog.text) %>
+      </div>
+      <div class="card-action">
+          <%= link_to 'Edit', "/blog/#{blog.id}/edit", method: :get %>
+          <%= link_to 'Delete', "/blog/#{blog.id}", method: :delete %>
+          <%= blog.updated_at %>
+      </div>
+      <div class="card-reveal">
+      </div>
+    </div>

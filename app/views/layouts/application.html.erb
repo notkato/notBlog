@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head><% t = Time.new
+    str = t.strftime("%Y-%m-%d %H:%M:%S")%>
+    <title>NotBlog</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style type="text/css" href="./style.scss"></style>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <nav class="#1565c0 blue darken-3">
+    <div class="nav-wrapper">
+    <%= str %>
+      <a href="/blog" class="brand-logo center">notBlog</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><% if user_signed_in? %>
+             <div class="user_nav grid-6">
+                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+                <li><a class="post" href="/blog/new">投稿する</a></li>
+                <li><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"><i class="large material-icons">laptop_mac</i></li>
+             </div></li>
+        <li><% else %>
+                <div class="grid-6">
+                <li><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
+                <li><%= link_to "新規登録", new_user_registration_path, class: 'post' %></li>
+                <li><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"><i class="large material-icons">laptop_mac</i></li>
+                </div>
+            <% end %></li>
+      </ul>
+    </div>
+    </nav>
+    <%= yield %>
+           <footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+              <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"><i class="large material-icons">laptop_mac</i>
+                <h5 class="white-text">Footer Content<h5/>
+              </div>
+              <div class="col l4 offset-l2 s12">
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2019 Copyright notBlog
+            </div>
+          </div>
+        </footer>
+  </body>
+
+  
+</html>

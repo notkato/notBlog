@@ -1,0 +1,11 @@
+<div class="contents row">
+    <%= form_for @blog do |form|%>
+    <div class="input-field col s12">
+      <h3>
+        編集する
+      </h3>
+      <%= form.text_field :text%>
+      <%= form.submit %>
+    </div>
+    <% end %>
+  </div>
